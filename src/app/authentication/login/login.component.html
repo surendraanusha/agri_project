@@ -1,0 +1,53 @@
+<div class="auth-form">
+    <div class="inner-form">
+    <div class="d-flex">
+        <button 
+            mat-raised-button 
+            [ngClass]="{'toggleButton': !toggling,'toggleButton2':toggling}" 
+            (click)="SignUp()"
+        >
+            Sign Up
+        </button>
+        <button mat-raised-button 
+            [ngClass]="{'toggleButton': toggling,'toggleButton2':!toggling}" 
+            (click)="SignIn()"
+        >
+             Sign In
+        </button>
+    </div>
+    <ng-container *ngIf="toggling;else elseBlock">
+        <form [formGroup]="userDetails" class="bg-light p-4 d-flex flex-column" >
+            <h1>Signin</h1>
+            <div class="fields mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" placeholder="Enter Your Username" formControlName="username"/>
+            </div>
+            <div class="fields mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" placeholder="Enter Your Password" formControlName="password" required/>
+            </div>
+            <button type="button" mat-raised-button color="primary" [disabled]="!userDetails.valid" (click)="loginUser()">Signin</button>
+        <p *ngIf="errorMsg" class="errorValue">*Username & Password didn't match</p>
+        </form>
+    </ng-container>
+    <ng-template #elseBlock>
+        <form class="bg-light p-4 d-flex flex-column" [formGroup]="userDetails" (submit)="signUpUser()">
+            <h1>Signup</h1>     
+            <div class="fields mb-3">
+                <label class="form-label" >Username</label>
+                <input type="text" class="form-control" placeholder="Create Your Username" formControlName="username" required/>
+            </div>
+            <div class="fields mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" placeholder="Create Your Password" formControlName="password" required/>
+            </div>
+            <div class="fields mb-3">
+                <label class="form-label">Confirm Password</label>
+                <input type="text" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword" required/>
+            </div>
+            <button type="submit" mat-raised-button color="primary" [disabled]="!userDetails.valid">Signup</button>
+        <!-- <p *ngIf="passwordMsg" class="text-danger mt-2">*pasword & confirm password didn't match.</p> -->
+        </form>
+    </ng-template>
+ </div>
+</div>

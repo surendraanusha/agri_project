@@ -1,0 +1,61 @@
+<div class="bookings">
+    <div class="container inner-bookings">
+        <!-- <ng-container *ngIf="bookedArray.length !== 0;else elseBlock"> -->
+            <div class="row g-3">
+                <div class="d-flex justify-content-between align-items-center p-2">
+                    <h1 class="booking-title">My Bookings</h1>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <button mat-raised-button color="primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                                <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                                </svg>Filter
+                            </button>
+                        </mat-expansion-panel-header>
+                        <div>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Choose a date*</mat-label>
+                                <input matInput [matDatepicker]="myDatePicker"> 
+                                <mat-datepicker-toggle matSuffix [for]="myDatePicker"></mat-datepicker-toggle>
+                                <mat-datepicker #myDatePicker>
+                                    <mat-datepicker-actions>
+                                        <button mat-button matDatepickerCancel>Cancel</button>
+                                        <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                                    </mat-datepicker-actions>
+                                </mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                            <button (click)="Apply(myDatePicker)" mat-raised-button color="primary">Apply</button>
+                      </mat-expansion-panel>
+                    <!-- <button mat-raised-button color="primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
+                        <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                        </svg>Filter
+                    </button> -->
+                </div>
+                <div *ngFor="let BookDates of bookedArray">
+                    <div class="col-12">
+                        <div class="p-2 border bg-light rounded-2 d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center dateContainer">
+                                <div class="bg-warning py-3 px-3 rounded-2 bookingDate">marketId-{{BookDates.marketId}}</div>
+                                <div>
+                                    <p class="mb-2">{{BookDates.marketName}}</p>
+                                    <p class="bookingDate">{{BookDates.bookDate}}</p>
+                                </div>
+                            </div>
+                            <p>{{BookDates.status}}</p>
+                            <button mat-raised-button color="primary" (click)="cancelSlot(BookDates.marketId,BookDates.bookDate)" [disabled]="BookDates.status != 'booked'">Cancel Slot</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- </ng-container> -->
+        <!-- <ng-template #elseBlock>
+            <div class="d-flex justify-content-center flex-column align-items-center mt-4">
+                <img src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-empty-cart-img.png" alt="Empty" class="EmptyView">
+                <p class="booking-sub-title mt-3">Your Bookings Are Empty</p>
+                <button mat-raised-button color="primary" routerLink="/" class="mt-3">Book Now</button>
+            </div>
+        </ng-template> -->
+    </div>
+</div>

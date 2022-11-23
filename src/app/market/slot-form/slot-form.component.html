@@ -1,0 +1,32 @@
+<mat-dialog-content>
+    <div class="d-flex justify-content-between align-items-center mb-2">
+        <h2 class="mb-0">Create Slot</h2>
+        <svg matTooltip="Create Slot" matTooltipPosition="above" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+        </svg>
+    </div>
+    
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Choose a date*</mat-label>
+        <input matInput [matDatepicker]="myDatePicker" [min]="mindate"> 
+        <mat-datepicker-toggle matSuffix [for]="myDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #myDatePicker>
+            <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Cancel</button>
+                <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+              </mat-datepicker-actions>
+        </mat-datepicker>
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <button
+    mat-raised-button
+    color="primary"
+    (click)="onConfirmClick(myDatePicker)"
+    tabindex="1"
+    >
+    Yes
+    </button>
+    <button mat-raised-button mat-dialog-close tabindex="-1">No</button>
+</mat-dialog-actions>

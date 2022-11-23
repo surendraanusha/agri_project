@@ -1,0 +1,84 @@
+.fields{
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    margin-bottom: 10px; 
+}
+.form-container{   
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // width: 30vw;
+    background-color: white;
+}
+.navContainer{
+    background-color: rgb(209, 233, 249);
+    .logo{
+        color: rgb(8, 49, 115);
+        font-size: 17px;
+        font-weight: 500;  
+    }
+    .nav-innerContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .page-opt{
+            padding-right: 11px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+}
+.inner-form{
+    margin-top: 20px;
+    border: 2px solid;
+    border-radius: 5px;
+    border-color: rgb(200, 201, 201);
+}
+.toogles{
+    display: flex;
+    justify-content: space-between;
+    width: 40vh;
+    display: flex;
+}
+.errorValue{
+    color: red;
+    font-size: 12px;
+}
+.toggleButton{
+    background-color: rgb(255, 255, 255);
+    border-top-width: 2px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    width: 50%;
+    border-right-width: 0px;
+    border-style: solid;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-color: green;
+}
+.toggleButton2{
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 3px;
+    border: 0px solid;
+    width: 50%;
+    padding-bottom: 3px;
+    background-color: rgb(212, 211, 211);
+}
+.auth-form{
+    // background-color: rgb(241, 246, 249);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    // height: 80vh;
+}
+
+.login-buttons{
+    justify-content: space-between;
+}

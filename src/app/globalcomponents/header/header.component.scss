@@ -1,0 +1,33 @@
+.navContainer{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    .logo{
+        color: rgb(8, 49, 115);
+        font-size: 17px;
+        font-weight: 500;  
+    }
+    .nav-innerContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .page-opt{
+            padding-right: 18px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (max-width:576px) {
+    // .navContainer{
+    //     padding-left: 10px;
+    //     padding-right: 10px;
+    // }
+    .page-opt{
+        padding-right: 10px !important;  
+    }
+    // .logo{
+    //     padding-left: 6px!important;
+    // }
+}

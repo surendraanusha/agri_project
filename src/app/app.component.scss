@@ -1,0 +1,64 @@
+
+.header-container{
+    background-color: rgb(209, 233, 249);
+    height: 13vh;
+}
+.home-container{
+    height:90vh;
+    background-color: rgb(238, 236, 236);
+}
+
+
+// -----------> mobile device ------------->
+// @media screen and (max-width:576px) {
+//     .header-container{
+//         background-color: rgb(209, 233, 249);
+//         height: 13vh;
+//     }
+//     .home-container{
+//         height: -webkit-fill-available;
+//         background-color: rgb(238, 236, 236);
+//     }
+// }
+
+// -----------> tab device ------------->
+@media screen and (min-width:768px) {
+    .header-container{
+        height:9vh;
+    }
+    .home-container{
+        height: 91vh;
+        
+    }
+}
+
+// ------------ above tab devices ------------>
+
+@media screen and (min-width:1024px) {
+    .header-container{
+        height:10vh;
+    }
+    .home-container{
+        height: 90vh;
+        
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .header-container{
+        height:7vh;
+    }
+    .home-container{
+        height: 93vh;
+        
+    }
+}
+@media screen and (min-width:2560px) {
+    .header-container{
+        height:3vh;
+    }
+    .home-container{
+        height: 97vh;
+        
+    }
+}

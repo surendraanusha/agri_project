@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+html, body { height: 100%; }
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+p{
+    margin-bottom: 0px !important;
+}
+
+.successMessage{
+    background-color: rgb(54, 178, 60);
+    color: white;
+}
+
+.dangerMessage{
+    background-color: rgb(212, 53, 53);
+    color: white;
+}

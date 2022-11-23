@@ -1,0 +1,50 @@
+.bookings{
+    .inner-bookings{
+        padding-top: 15px;
+        padding-bottom:15px;
+    }
+}
+.booking-title{
+    color: rgb(14, 50, 90);
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+.table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  .filter-btns{
+    width: 275px;
+  }
+
+.EmptyView{
+    width: 180px;
+    height: 190px
+}
+.dateContainer{
+    width: 215px;
+}
+.bookingDate{
+    color: rgb(14, 50, 90);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+.booking-sub-title{
+    color: rgb(14, 50, 90);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+@media screen  and (max-width:576px){
+    .filter-btns{
+        width: 200px;
+    }
+}

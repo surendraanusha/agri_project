@@ -1,0 +1,77 @@
+    <!-- market info container -->
+<div class="market-info-container">
+        <div class="container market-inner overflow-hidden">
+            <!-- market information container -->
+            <div class="row g-3">
+                <div class="col-12 col-md-6">
+                    <div class="market-image bg-warning rounded-2 d-flex justify-content-center align-items-center ">
+                        market-image
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <mat-card class="market-image ">
+                        <mat-card-content>
+                            <p class="marketName">Market Name:<span class="span-tag"> {{marketObj.marketName}}</span></p>
+                            <p class="marketName">Reg Num:<span class="span-tag"> {{marketObj.marketNumber}}</span></p>
+                            <p class="marketName">Address:<span class="span-tag"> {{marketObj.location}}</span></p>
+                            <p class="marketName">About Market:<span class="span-tag"> {{marketObj.description}}</span></p>
+                            <p class="marketName">Mobile:<span class="span-tag"> {{marketObj.contact}}</span></p>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+            <!-- slots container -->
+            <div class="mt-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h1 class="mb-0 text-dark slotsTitle">Available Slots</h1>
+                    <button class="btn btn-success" *ngIf="userType == 'admin'" (click)="createSlot()">Create Slot</button>
+                </div>
+                <div class="row g-3">
+                    <div class="col-12 col-md-6" *ngFor="let slot of marketObj.slots.keys">
+                        <div *ngIf="userType !='admin'" class="rounded-2 p-2 bg-light shadow-sm d-flex justify-content-between align-items-center">
+                            <p class="slot">{{slot}}</p>
+                            <ng-container *ngIf="marketObj.slots[slot].available;else elseBlock">
+                                <span class="slot">Available</span>
+                            </ng-container>
+                            <ng-template #elseBlock>
+                                <ng-container *ngIf="marketObj.slots[slot].seller === getNewLogginUserID;else ElseBlock">
+                                    <span class="slot">Booked</span>
+                                </ng-container>
+                                <ng-template #ElseBlock>
+                                    <span class="slot">Not Available</span>
+                                </ng-template>
+                            </ng-template>
+                            <button class="btn btn-outline-danger" *ngIf="userType == 'admin'" [disabled]="marketObj.slots[slot].available === false" (click)="deleteSlot(marketObj,slot)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                                </svg>
+                            </button>
+                            <ng-container *ngIf="marketObj.slots[slot].seller === getNewLogginUserID;else ElseBlock">
+                                <button class="btn btn-success" (click)="cancelSlot(marketObj.id,slot)">Cancel</button>
+                            </ng-container>
+                            <ng-template #ElseBlock>
+                                <button class="btn btn-success" *ngIf="userType != 'admin'" [disabled]="marketObj.slots[slot].available === false" (click)="bookSlot(marketObj.id,slot)">Book</button>
+                            </ng-template>
+                            <!-- <button class="btn btn-success" *ngIf="userType != 'admin'" [disabled]="marketObj.slots[slot].available === false" (click)="bookSlot(marketObj.id,slot)">Book</button>
+                            <button class="btn btn-success" (click)="bookSlot(marketObj.id,slot)">Cancel</button> -->
+                        </div>
+                        <div *ngIf="userType =='admin'" class="rounded-2 p-2 bg-light shadow-sm d-flex justify-content-between align-items-center">
+                            <p class="slot">{{slot}}</p>
+                            <ng-container *ngIf="marketObj.slots[slot].available;else elseBlock">
+                                <span class="slot">Unoccupied</span>
+                            </ng-container>
+                            <ng-template #elseBlock>
+                                <span class="slot">Occupied</span>
+                            </ng-template>
+                            <button class="btn btn-outline-danger" *ngIf="userType == 'admin'" [disabled]="marketObj.slots[slot].available === false" (click)="deleteSlot(marketObj,slot)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                                </svg>
+                            </button>
+                            <button class="btn btn-success" *ngIf="userType != 'admin'" [disabled]="marketObj.slots[slot].available === false" (click)="bookSlot(marketObj.id,slot)">Book</button>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </div>
+</div>
